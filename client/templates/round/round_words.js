@@ -6,6 +6,7 @@ Template.RoundWords.events({
 
 Template.RoundWords.helpers({
   getPool: function() {
-    return Session.get('game').pool;
+    var game = Games.findOne(Session.get("game")._id);
+    return game.pool;
   }
 });
