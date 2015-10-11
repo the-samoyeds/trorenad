@@ -16,9 +16,9 @@ if(Meteor.isServer){
           }
         );
       });
-    };
+    }
   });
-};
+}
 
 MessagesJSON = [
   "Oh boy",
@@ -61,4 +61,4 @@ MessagesJSON = [
   "I'll be back We'll make out",
   "You very bad man Jerry Very bad man",
   "Ah look I I'm sorry to bother you but I'm a US postal worker and my mail truck was just ambushed by a band of backwoods mail-hating survivalists"
-]
+];

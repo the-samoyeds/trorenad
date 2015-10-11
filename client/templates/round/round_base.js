@@ -36,12 +36,30 @@ Template.RoundBase.onRendered(function(){
   dragula([document.querySelector("#top-defaults"), document.querySelector("#bottom-solve")]).on('drag', function (el) {
 
   }).on('drop', function (el, target, source, sibling) {
+
+    // TODO: Henrique
     var paragraph = $('#bottom-solve').parent().find('p');
     if ($('#bottom-solve').children().length > 0) {
       paragraph.addClass('hidden');
     } else {
       paragraph.removeClass('hidden');
     }
+
+    var game = Games.findOne(Session.get("game")._id);
+    var logic = new WordLogic(game, true);
+
+    var code = el.innerText.trim();
+
+    var pos = 0;
+
+    $("#bottom-solve code").each(function (i, el) {
+      if (el.innerText.trim() == code) {
+        pos = i;
+      }
+    });
+
+    logic.answerWord(pos, code);
+
   }).on('over', function (el, container) {
 
   }).on('out', function (el, container) {
