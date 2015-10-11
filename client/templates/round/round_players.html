@@ -4,9 +4,10 @@
   </div>
     <ul class="players" id="bottom-defaults">
       {{#each players}}
-        <li>{{> Player name=name pictureUrl=profile.pictureUrl}}</li>
         {{#if currentWord}}
-          <img src="images/reading.png" alt="{{name}} has a card" />
+          <li>{{> Player name=name pictureUrl=profile.pictureUrl word=currentWord}}</li>
+        {{else}}
+          <li>{{> Player name=name pictureUrl=profile.pictureUrl }}</li>
         {{/if}}
       {{/each}}
     </ul>
