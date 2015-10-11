@@ -17,7 +17,8 @@ Package.onUse(function(api) {
   // api.use('ecmascript');
   api.addFiles([
     'startup.js',
-    'word-logic.js'
+    // 'word-logic.js'
+    'word-logic-game.js'
   ]);
 
   // api.addAssets('messages.json', 'server')

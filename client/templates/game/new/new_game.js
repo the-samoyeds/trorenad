@@ -1,10 +1,6 @@
 Template.NewGame.helpers({
   getGame: function() {
     return Session.get('game');
-  },
-
-  gameOn: function () {
-    return Session.get('gameon');
   }
 });
 
@@ -13,8 +9,8 @@ Template.FoundGame.helpers({
     return Session.get('game')._id;
   },
 
-  getPlayers: function() {
-    return Session.get('players');
+  getParticipants: function() {
+    return Session.get('participants');
   },
 
   isCreator: function() {
@@ -29,9 +25,17 @@ Template.FoundGame.helpers({
 
 Template.NewGame.events({
   'click a[type="submit"]': function () {
-    var game = Session.get('game')
-    game['logic'] = new WordLogic([{name: "B"},{name: "M"},{name: "L"}]);
-    game['logic'].startRound();
-    Session.set('game', game);
+    var game = Games.findOne(Session.get("game")._id)
+
+    // game.participants.push(Meteor.userId());
+
+    // var logic = new WordLogic([{name: "B"},{name: "M"},{name: "L"},{name: "H"},{name: "A"},{name: "C"}]);
+    var logic = new WordLogic(game);
+    logic.startRound();
+    // game.logic = logic;
+
+    // Games.update({ _id: game._id }, { $set: { logic: logic }});
+
+    // Session.set('game', game);
   }
 });
