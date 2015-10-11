@@ -1,0 +1,13 @@
+.player {
+  margin: 5px;
+}
+
+.player img {
+  max-width: 100px;
+  max-height: 100px;
+  display: block;
+}
+
+.player span {
+  font-size: 150%;
+}
