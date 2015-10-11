@@ -10,4 +10,16 @@ Meteor.startup(function() {
       }
     }
   );
+
+  ServiceConfiguration.configurations.upsert(
+    { service: 'google' },
+    {
+      $set: {
+        service: 'google',
+        clientId: Meteor.settings.google.clientId,
+        secret: Meteor.settings.google.secret
+      }
+    }
+  );
+
 });
