@@ -1,22 +1,19 @@
 <template name="NewGame">
-  {{#if gameOn}}
-    {{> RoundBase}}
-  {{else}}
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-xs-12">
-          {{#if getGame}}
-            {{> FoundGame}}
-          {{else}}
-            <div class="alert alert-danger" role="alert">Game not found</div>
-          {{/if}}
-        </div>
-      </div>
-
+  <div class="container text-center">
     <div class="row">
       <div class="col-xs-12">
+        {{#if getGame}}
+          {{> FoundGame}}
+        {{else}}
+          <div class="alert alert-danger" role="alert">Game not found</div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 text-center">
         <a href="/round" class="btn btn-hover btn-menu" style="background-color: #00a1d5;" type="submit" name="new-game">
-          <img class="btn-img" style="background-color: #007095;" src="../images/arrow.png">
+          <img class="btn-img" style="background-color: #007095;" src="/images/arrow.png">
           START
         </a>
       </div>
@@ -25,13 +22,12 @@
     <div class="row">
       <div class="col-xs-12">
         <a href="/" class="btn btn-hover btn-menu" style="background-color: #fc6172;" type="button" name="button">
-          <img class="btn-img" style="background-color: #b1444f;" src="../images/logout.png">
+          <img class="btn-img" style="background-color: #b1444f;" src="/images/logout.png">
           LEAVE
         </a>
       </div>
     </div>
   </div>
-  {{/if}}
 </template>
 
 <template name="FoundGame">

@@ -1,11 +1,9 @@
 <template name="RoundPlayers">
   <div class="round-base">
     <ul class="players">
-      <li>{{> Player name="Bradley" pictureUrl="images/man.png"}}</li>
-      <li>{{> Player name="Marylia" pictureUrl="images/woman.png"}}</li>
-      <li>{{> Player name="Luiz" pictureUrl="images/man.png"}}</li>
-      <li>{{> Player name="Henrique" pictureUrl="images/man.png"}}</li>
-      <li>{{> Player name="Henrique" pictureUrl="images/man.png"}}</li>
+      {{#each players}}
+        <li>{{> Player name=name pictureUrl="images/man.png"}}</li>
+      {{/each}}
     </ul>
   </div>
 </template>

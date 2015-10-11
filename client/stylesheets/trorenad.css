@@ -40,7 +40,7 @@ code {
 }
 
 .btn-hover:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .btn-facebook {
@@ -57,13 +57,13 @@ code {
 }
 
 .btn-menu {
-    height: 44px;
-    width: 312px;
-    border-radius: 0px;
-    color: white;
-    font-size: 20px;
-    color: white;
-    position: relative;
+  height: 44px;
+  width: 312px;
+  border-radius: 0px;
+  color: white;
+  font-size: 20px;
+  color: white;
+  position: relative;
 }
 
 .btn-img {
@@ -80,7 +80,6 @@ code {
   height: 44px;
   border-radius: 0px;
   margin-left: -3px;
-
 }
 
 .glyphicon.glyphicon-massive {
@@ -97,17 +96,6 @@ code {
 
 .word-wrap {
   word-wrap: break-word;
-}
-
-.qr-code {
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
-}
-
-.qr-code img {
-  background: white;
-  padding: 5px;
 }
 
 .leave-game-btn {
