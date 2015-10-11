@@ -20,7 +20,9 @@ Package.onUse(function(api) {
     'word-logic.js'
   ]);
 
-  api.addAssets('messages.json', 'server')
+  // api.addAssets('messages.json', 'server')
+
+  api.use("reactive-var")
 
   // api.addFiles('');
   api.export('WordLogic', ['client', 'server']);
