@@ -5,7 +5,7 @@
         <h1>Tronerad!</h1>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-xs-12">
         {{#if currentUser}}
@@ -14,13 +14,18 @@
           <button id="logout">Logout</button>
         {{else}}
           <div class="row">
-            <div class="col-xs-12">
-              <button id="facebook-login" class="btn btn-social btn-facebook btn-hover"></button>
+            <div class="col-xs-12 col-md-offset-4 col-md-4">
+              <a id="facebook-login" class="btn btn-block btn-social btn-facebook">
+                <i class="fa fa-facebook"></i> Sign in with Facebook
+              </a>
             </div>
           </div>
+
           <div class="row">
-            <div class="col-xs-12">
-              <button id="google-login" class="btn btn-social btn-google btn-hover"></button>
+            <div class="col-xs-12 col-md-offset-4 col-md-4">
+              <a id="google-login" class="btn btn-block btn-social btn-google">
+                <i class="fa fa-google"></i> Sign in with Google
+              </a>
             </div>
           </div>
         {{/if}}

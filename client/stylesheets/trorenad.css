@@ -29,26 +29,8 @@ code {
   margin-bottom: 10px;
 }
 
-.btn-social {
-  background-size: 270px 44px;
-  width: 268px;
-  height: 44px;
-  border-left-width: 0px;
-  background-position-x: -1px;
-  background-position-y: -1px;
-  border-radius: 0px;
-}
-
 .btn-hover:hover {
   opacity: 0.7;
-}
-
-.btn-facebook {
-  background-image: url("images/fbButton.png");
-}
-
-.btn-google {
-  background-image: url("images/googleButton.png");
 }
 
 .user-name {
