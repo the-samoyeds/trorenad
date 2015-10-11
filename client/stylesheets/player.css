@@ -1,8 +1,6 @@
 .players {
   margin: 0;
   padding: 0;
-  max-width: 100px;
-  max-height: 100px;
 }
 
 .players li {
@@ -11,6 +9,8 @@
 
 .player {
   margin: 5px;
+  width: 100px;
+  display: inline-block;
 }
 
 .player img {
