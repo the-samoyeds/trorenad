@@ -18,11 +18,9 @@ Template.RoundBase.events({
   'click .word-card': function (event) {
     var timeoutId;
 
-    $("#top-defaults li div").each(function (i, el) {
-        $(el).removeClass("word-gray").addClass("word-green");
-    });
-
+    $("#top-defaults li div").removeClass("word-gray").addClass("word-green");
     $('#card-'+event.toElement.id).removeClass("word-green").addClass("word-gray");
+    console.log("WORD SELECTED: " + this.text);
 
     $('.word-card').mousedown(function() {
       timeoutId = setTimeout(function() {
@@ -33,7 +31,7 @@ Template.RoundBase.events({
     });
   },
   'click .player': function (event) {
-    console.log(event.toElement.parentElement.id); //userId
+    console.log("USER ID SELECTED: " + this.userId);
   }
 
 });
