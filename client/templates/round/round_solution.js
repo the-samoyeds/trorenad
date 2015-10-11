@@ -6,6 +6,12 @@ Template.RoundSolution.helpers({
 
 Template.RoundSolution.events({
   'click a[type="submit"]': function () {
-    console.log("Validate the sentence!");
+
+    var sentence = "";
+    $("#bottom-solve code").each(function (i, el) {
+      sentence = sentence + " " + el.innerHTML;
+    })
+
+    console.log("Validate the sentence: " + sentence);
   }
 });
