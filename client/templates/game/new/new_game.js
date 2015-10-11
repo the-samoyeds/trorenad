@@ -28,9 +28,7 @@ Template.FoundGame.helpers({
 
 
 Template.NewGame.events({
-  'click button[type="submit"]': function () {
-    Session.set('gameon', true);
-
+  'click a[type="submit"]': function () {
     var game = Session.get('game')
     game['logic'] = new WordLogic([{name: "B"},{name: "M"},{name: "L"}]);
     game['logic'].startRound();

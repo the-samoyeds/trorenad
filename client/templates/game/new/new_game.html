@@ -1,17 +1,14 @@
 <template name="NewGame">
-  {{#if gameOn}}
-    {{> RoundBase}}
-  {{else}}
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-xs-12">
-          {{#if getGame}}
-            {{> FoundGame}}
-          {{else}}
-            <div class="alert alert-danger" role="alert">Game not found</div>
-          {{/if}}
-        </div>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12">
+        {{#if getGame}}
+          {{> FoundGame}}
+        {{else}}
+          <div class="alert alert-danger" role="alert">Game not found</div>
+        {{/if}}
       </div>
+    </div>
 
     <div class="row">
       <div class="col-xs-12 text-center">
@@ -31,7 +28,6 @@
       </div>
     </div>
   </div>
-  {{/if}}
 </template>
 
 <template name="FoundGame">
