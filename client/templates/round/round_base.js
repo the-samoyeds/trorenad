@@ -17,10 +17,12 @@ Template.RoundBase.events({
   },
   'click .word-card': function (event) {
     var timeoutId;
-    $('#card-'+event.toElement.id).removeClass("word-green");
-    $('#card-'+event.toElement.id).removeClass("word-red");
-    $('#card-'+event.toElement.id).removeClass("word-white");
-    $('#card-'+event.toElement.id).addClass("word-gray");
+
+    $("#top-defaults li div").each(function (i, el) {
+        $(el).removeClass("word-gray").addClass("word-green");
+    });
+
+    $('#card-'+event.toElement.id).removeClass("word-green").addClass("word-gray");
 
     $('.word-card').mousedown(function() {
       timeoutId = setTimeout(function() {
