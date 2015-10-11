@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+.btn-facebook {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-facebook:hover {
+  border-color: #F00;
+}
