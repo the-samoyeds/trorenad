@@ -98,3 +98,14 @@ code {
 .word-wrap {
   word-wrap: break-word;
 }
+
+.qr-code {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.qr-code img {
+  background: white;
+  padding: 5px;
+}

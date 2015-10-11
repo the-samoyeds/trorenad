@@ -15,5 +15,9 @@ Template.FoundGame.helpers({
 
   isCreator: function() {
     return Session.get('game').creator === Meteor.currentId();
+  },
+
+  getCurrentRoute: function () {
+    return Router.current().route.getName();
   }
 });

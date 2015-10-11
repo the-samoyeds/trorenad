@@ -2,12 +2,6 @@
   <div class="container text-center">
     <div class="row">
       <div class="col-xs-12">
-        <h1>New Game</h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12">
         {{#if getGame}}
           {{> FoundGame}}
         {{else}}
@@ -18,19 +12,40 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <button class="btn btn-lg btn-primary" type="submit" name="new-game">OK</button>
-        <a href="/">Back</a>
+        <button class="btn btn-lg btn-primary" type="submit" name="new-game">START</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-lg btn-primary" type="button" name="button">LEAVE</button>
       </div>
     </div>
   </div>
 </template>
 
 <template name="FoundGame">
-  <h2>{{ getGameId }}</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <code class="game">{{ getGameId }}</code>
+      </div>
+    </div>
 
-  <ul>
-    {{#each getParticipants}}
-    <li>{{ profile.name }}</li>
-    {{/each}}
-  </ul>
+    <div class="row">
+      <div class="col-xs-12">
+        {{> QR target=getCurrentRoute }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="players">
+          {{#each getParticipants}}
+          {{> Player name=profile.firstName pictureUrl=profile.pictureUrl }}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
