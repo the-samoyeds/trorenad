@@ -78,8 +78,12 @@ WordLogic.prototype.roundSolved = function() {
 WordLogic.prototype.generate = function(round) {
   'use strict';
 
+console.log(this.game());
+
   var self = this;
   var players = this.players();
+
+console.log(players);
 
   var message = this._getMessage(round);
   var shuffledMessage = this._shuffleArray(message);
@@ -114,7 +118,7 @@ WordLogic.prototype._getMessage = function(round) {
   'use strict';
 
   var numWordsInMessage = (this.players().length - 1) * round;
-
+console.log(numWordsInMessage);
   var message = _.sample(
     Messages.find(
       { words: { $gte: numWordsInMessage, $lt: (numWordsInMessage + this.players().length) } }
