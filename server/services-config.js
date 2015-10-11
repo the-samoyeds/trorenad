@@ -4,8 +4,8 @@ Meteor.startup(function() {
     {
       $set: {
         service: 'facebook',
-        appId: '979465912116705',
-        secret: '',
+        appId: Meteor.settings.facebook.appId,
+        secret: Meteor.settings.facebook.secret,
         loginStyle: 'popup'
       }
     }
