@@ -5,12 +5,16 @@ if(Meteor.isServer){
   Meteor.startup(function(){
 
     // Initialize Messages
-    if (Messages.find().count() == 0) {
+    if (Messages.find().count() != MessagesJSON.length) {
       MessagesJSON.forEach(function(message) {
-        Messages.insert({
-          words: message.split(" ").length,
-          message: message
-        });
+        Messages.upsert(
+          { message: message },
+          { $set: {
+              words: message.split(" ").length,
+              message: message
+            }
+          }
+        );
       });
     };
   });

@@ -11,9 +11,10 @@ WordLogic.prototype.generate = function(round) {
 
   var message = this._getMessage(round);
   var shuffledMessage = this._shuffleArray(message);
+  var maxWordsPerUser = Math.ceil(message.length / this.players.length);
 
   var results = this.players.map(function(player, idx) {
-    var words = shuffledMessage.splice(0,round);
+    var words = shuffledMessage.splice(0,maxWordsPerUser);
     var cypher = self._generateCypher(round);
 
     words.forEach(function(word) {
@@ -35,7 +36,10 @@ WordLogic.prototype._getMessage = function(round) {
 
   var numWordsInMessage = this.players.length * round;
 
-  var message = _.sample(Messages.find( { words: numWordsInMessage }).fetch());
+  var message = _.sample(
+    Messages.find(
+      { words: { $gte: numWordsInMessage, $lt: (numWordsInMessage + this.players.length) } }
+    ).fetch());
 
   var words = message["message"].toUpperCase().split(" ");
 
