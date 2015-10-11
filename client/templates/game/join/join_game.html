@@ -8,13 +8,16 @@
 
     <div class="row">
       <div class="col-xs-12">
+        {{#if error}}
+          <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {{/if}}
         <input type="text" name="gameName" value="">
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-12">
-        <button class="btn btn-lg btn-primary" type="submit" name="button">OK</button>
+        <button class="btn btn-lg btn-primary" type="submit" name="join-game">OK</button>
         <a href="/">Back</a>
       </div>
     </div>

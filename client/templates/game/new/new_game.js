@@ -11,5 +11,9 @@ Template.FoundGame.helpers({
 
   getParticipants: function() {
     return Session.get('participants');
+  },
+
+  isCreator: function() {
+    return Session.get('game').creator === Meteor.currentId();
   }
 });
