@@ -1,0 +1,11 @@
+root = true
+
+[*]
+charset      = utf-8
+indent_size  = 2
+indent_style = space
+tab_width    = 2
+
+end_of_line              = lf   # Not supported in RubyMine
+insert_final_newline     = true # Not supported in RubyMine
+trim_trailing_whitespace = true # Not supported in RubyMine
