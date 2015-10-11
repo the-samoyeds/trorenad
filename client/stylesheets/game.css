@@ -15,3 +15,9 @@ code.game {
   background: white;
   padding: 5px;
 }
+
+.error-text {
+  color: #a94442;
+  margin-top: -35px;
+  font-size: 18px;
+}

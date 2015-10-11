@@ -8,12 +8,13 @@
 
     <div class="row" style="margin-top: 50px; margin-bottom: 70px;">
       <div class="col-xs-12">
-        {{#if error}}
-          <div class="alert alert-danger" role="alert">{{ error }}</div>
-        {{/if}}
         <input type="text" name="gameName" value="" size="6" maxlength="5">
       </div>
     </div>
+
+    {{#if error}}
+      <div class="error-text" role="alert">{{ error }}</div>
+    {{/if}}
 
     <div class="row">
       <div class="col-xs-12 text-center">
