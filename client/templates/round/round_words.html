@@ -1,10 +1,7 @@
 <template name="RoundWords">
   <ul class="round-words">
-    <li>{{> Word text="THIS" mode="green"}}</li>
-    <li>{{> Word text="GAME" mode="white"}}</li>
-    <li>{{> Word text="IS" mode="red"}}</li>
-    <li>{{> Word text="SO" mode="green"}}</li>
-    <li>{{> Word text="MUCH" mode="white"}}</li>
-    <li>{{> Word text="FUN" mode="white"}}</li>
+    {{#each getPool}}
+      <li>{{> Word text="{{ crypted }}" mode="green"}}</li>
+    {{/each}}
   </ul>
 </template>
