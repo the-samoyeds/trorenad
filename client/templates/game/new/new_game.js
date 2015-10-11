@@ -1,6 +1,12 @@
 Template.NewGame.helpers({
   getGame: function() {
     return Session.get('game');
+  },
+  gameStarted: function() {
+    if (Session.get("game") === undefined) return false;
+    
+    var game = Games.findOne(Session.get("game")._id)
+    return game && game.started;
   }
 });
 
