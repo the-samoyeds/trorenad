@@ -4,11 +4,11 @@
   </div>
     <ul class="players" id="bottom-players">
       {{#each players}}
-        <!-- {{#if currentWord}} -->
+        {{#if currentWord}}
           <li>{{> Player name=name pictureUrl=profile.pictureUrl word="asdasdasd"}}</li>
-        <!-- {{else}}
+        {{else}}
           <li>{{> Player name=name pictureUrl=profile.pictureUrl }}</li>
-        {{/if}} -->
+        {{/if}}
       {{/each}}
     </ul>
   </div>
