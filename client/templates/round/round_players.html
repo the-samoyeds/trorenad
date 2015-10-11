@@ -1,6 +1,8 @@
 <template name="RoundPlayers">
   <div class="round-base">
-    <ul class="players">
+    <div id='bottom-defaults' class='container'>
+  </div>
+    <ul class="players" id="bottom-defaults">
       {{#each players}}
         <li>{{> Player name=name pictureUrl="images/man.png"}}</li>
       {{/each}}
