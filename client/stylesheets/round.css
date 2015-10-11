@@ -25,6 +25,13 @@
   color: white;
 }
 
+.small-word {
+  width: 100px;
+  padding: 5px;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+}
 
 /******** RoundBase ********/
 .round-base {
