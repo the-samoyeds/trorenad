@@ -21,15 +21,3 @@
   font-size: 150%;
   display: block;
 }
-
-.player .glyphicon {
-  font-size: 300%;
-}
-
-.player .glyphicon-ok {
-  color: green;
-}
-
-.player .glyphicon-remove {
-  color: red;
-}

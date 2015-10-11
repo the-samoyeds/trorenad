@@ -7,6 +7,7 @@
 html * {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
+  color: white;
 }
 
 html, body {
@@ -48,4 +49,20 @@ code {
 
 .btn-google {
   background-image: url("images/googleButton.png");
+}
+
+.glyphicon.glyphicon-massive {
+  font-size: 300%;
+}
+
+.glyphicon-ok {
+  color: green;
+}
+
+.glyphicon-remove {
+  color: red;
+}
+
+.word-wrap {
+  word-wrap: break-word;
 }
