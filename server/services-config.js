@@ -16,8 +16,8 @@ Meteor.startup(function() {
     {
       $set: {
         service: 'google',
-        clientId: '11203735036-gfsfm202oam37ut5vdng324ro8nmje3a.apps.googleusercontent.com',
-        secret: ''
+        clientId: Meteor.settings.google.clientId,
+        secret: Meteor.settings.google.secret
       }
     }
   );
