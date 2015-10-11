@@ -7,9 +7,23 @@
   display: inline-block;
 }
 
+.players-single-line {
+  width: 100%;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  & .player {
+    display: inline-block;
+  }
+}
+
 .player {
-  margin: 5px;
+  margin: 5px 15px;
   width: 100px;
+  height: 100px;
   display: inline-block;
 }
 
