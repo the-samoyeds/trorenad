@@ -59,3 +59,19 @@
 
 
 /******** RoundWords ********/
+
+
+/******** RoundWords ********/
+.modal-guess {
+  text-align: center;
+}
+
+.modal-guess .modal-header,
+.modal-guess .modal-footer {
+  text-align: center;
+  border: 0;
+}
+
+.modal-guess input[type=text] {
+  margin-bottom: 30px;
+}
