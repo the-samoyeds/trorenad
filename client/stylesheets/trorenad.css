@@ -109,3 +109,13 @@ code {
   background: white;
   padding: 5px;
 }
+
+.leave-game-btn {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  padding: 10px;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+}
