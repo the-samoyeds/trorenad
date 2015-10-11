@@ -27,7 +27,7 @@ Package.onUse(function(api) {
 
   // api.addFiles('');
   api.export('WordLogic', ['client', 'server']);
-  api.export('Messages',['server','client']);
+  api.export('Messages',['client', 'server']);
 });
 
 Package.onTest(function(api) {
