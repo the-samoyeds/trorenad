@@ -8,13 +8,7 @@
 
     <div class="row">
       <div class="col-xs-12 user-name">
-        {{#if currentUser.services.facebook}}
-          <img src='http://graph.facebook.com/{{currentUser.services.facebook.id}}/picture/?type=large'>
-          {{currentUser.services.facebook.name}}
-        {{else}}
-          <img src='{{currentUser.services.google.picture}}'>
-          {{currentUser.services.google.name}}
-        {{/if}}
+        {{> Player name=getUserName pictureUrl=getUserPicture }}
       </div>
     </div>
 

@@ -9,3 +9,21 @@ Template.Welcome.events({
     });
   }
 });
+
+Template.Welcome.helpers({
+  getUserPicture: function() {
+    if ( Meteor.user().services.facebook) {
+      return 'http://graph.facebook.com/' +  Meteor.user().services.facebook.id + '/picture/?type=large';
+    } else if ( Meteor.user().services.google) {
+      return  Meteor.user().services.google.picture;
+    }
+  },
+
+  getUserName: function() {
+    if ( Meteor.user().services.facebook) {
+      return  Meteor.user().services.facebook.first_name;
+    } else if ( Meteor.user().services.google) {
+      return  Meteor.user().services.google.given_name;
+    }
+  }
+});
