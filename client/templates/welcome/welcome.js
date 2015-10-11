@@ -1,5 +1,7 @@
 Template.Welcome.events({
-  'click button[name="new-game"]': function(ev) {
+  'click a[name="new-game"]': function(ev) {
+    ev.preventDefault();
+    
     Meteor.call('addGame', function(err, _id) {
       if (err) {
         return console.error(err);

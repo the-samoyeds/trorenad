@@ -7,30 +7,40 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12">
-        <img src="images/youtube.jpg" alt="" />
+      <div class="col-xs-12 user-name">
+        {{#if currentUser.services.facebook}}
+          <img src='http://graph.facebook.com/{{currentUser.services.facebook.id}}/picture/?type=large'>
+          {{currentUser.services.facebook.name}}
+        {{else}}
+          <img src='{{currentUser.services.google.picture}}'>
+          {{currentUser.services.google.name}}
+        {{/if}}
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12">
-        {{currentUser.services.facebook.name}}
-        {{currentUser.services.google.name}}
-        <button id="logout">Logout</button>
-      </div>
-    </div>
-
-    {{#if currentUser}}
-    <div class="row">
-      <div class="col-xs-12">
-        <button href="/new" class="btn btn-lg btn-primary" type="button" name="new-game">NEW GAME</button>
+      <div class="col-xs-12 btn-hover">
+        <a href="/new" class="btn btn-img" type="button" name="new-game" style="background-image: url('images/plus.png'); background-color: #007095;"></a>
+        <a href="/new" class="btn btn-text" type="button" name="new-game" style="background-color: #00a1d5;">NEW GAME</a>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12">
-        <a href="/join" class="btn btn-lg btn-primary" type="button" name="button">JOIN GAME</a>
+      <div class="col-xs-12 btn-hover">
+        <a href="/join" class="btn btn-img" type="button" name="button" style="background-image: url('images/arrow.png'); background-color: #3b2456;"></a>
+        <a href="/join" class="btn btn-text" type="button" name="button" style="background-color: #55347c;">JOIN GAME</a>
       </div>
     </div>
-    {{/if}}
+    <div class="row">
+      <div class="col-xs-12 btn-hover">
+        <a href="/tutorial" class="btn btn-img" type="button" name="button" style="background-image: url('images/pages.png'); background-color: #59987d;"></a>
+        <a href="/tutorial" class="btn btn-text" type="button" name="button" style="background-color: #7fd9b4;">TUTORIAL</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 btn-hover" id="logout">
+        <a href="/" class="btn btn-img" type="button" name="button" style="background-image: url('images/logout.png'); background-color: #b1444f;"></a>
+        <a href="/" class="btn btn-text" type="button" name="button" style="background-color: #fc6172;">LOGOUT</a>
+      </div>
+    </div>
   </div>
 </template>

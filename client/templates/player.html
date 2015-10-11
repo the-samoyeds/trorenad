@@ -2,5 +2,11 @@
   <div class="player">
     <img src="{{pictureUrl}}" class="img-circle" alt="{{name}} profile picutre" />
     <span>{{name}}</span>
+    {{#if deciphered}}
+    <span class="glyphicon glyphicon-massive glyphicon-ok" aria-hidden="true"></span>
+    {{/if}}
+    {{#if notDeciphered}}
+    <span class="glyphicon glyphicon-massive glyphicon-remove" aria-hidden="true"></span>
+    {{/if}}
   </div>
 </template>

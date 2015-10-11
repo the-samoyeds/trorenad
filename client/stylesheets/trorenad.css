@@ -7,11 +7,17 @@
 html * {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
+  color: white;
 }
 
 html, body {
   width: 100%;
   height: 100%;
+  background-color: #112539;
+}
+
+h1 {
+  color: white;
 }
 
 code {
@@ -23,28 +29,63 @@ code {
   margin-bottom: 10px;
 }
 
-.btn-facebook {
-  background-color: black;
-  background-image: url("images/fbButton.png");
-  background-size: 268px 44px;
+.btn-social {
+  background-size: 270px 44px;
   width: 268px;
   height: 44px;
   border-left-width: 0px;
+  background-position-x: -1px;
+  background-position-y: -1px;
+  border-radius: 0px;
 }
 
-.btn-facebook:hover {
-  opacity: 0.7;
+.btn-hover:hover {
+    opacity: 0.7;
+}
+
+.btn-facebook {
+  background-image: url("images/fbButton.png");
 }
 
 .btn-google {
-  background-color: black;
   background-image: url("images/googleButton.png");
-  background-size: 268px 44px;
-  width: 268px;
-  height: 44px;
-  border-left-width: 0px;
 }
 
-.btn-google:hover {
-  opacity: 0.7;
+.user-name {
+  color: white;
+  font-size: 30px;
+}
+
+.btn-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 0px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-text {
+  width: 268px;
+  height: 44px;
+  border-radius: 0px;
+  margin-left: -3px;
+  font-size: 20px;
+  color: white;
+}
+
+.glyphicon.glyphicon-massive {
+  font-size: 300%;
+}
+
+.glyphicon-ok {
+  color: green;
+}
+
+.glyphicon-remove {
+  color: red;
+}
+
+.word-wrap {
+  word-wrap: break-word;
 }

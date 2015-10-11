@@ -2,7 +2,62 @@ WordLogic = function(players) {
   'use strict';
 
   this.players = players;
+  this.master = new ReactiveVar(_.sample(this.players));
+  this.currentRound = new ReactiveVar(1);
+  this.pool = new ReactiveVar([]);
+  this.answer = new ReactiveVar([]);
 };
+
+WordLogic.prototype.startRound = function() {
+  var game = this.generate(this.currentRound.get());
+
+  var words = [];
+  _.each(game, function(g) { words = words.concat(g["words"]); });
+  this.pool.set(words);
+
+  // var emptyAnswer = this.pool.get().map(function(word, idx) {
+  //                     return { pos: idx };
+  //                   });
+  this.answer.set(Array(this.pool.get().length));
+}
+
+WordLogic.prototype.endRound = function() {
+  this._nextMaster();
+  this.currentRound.set(this.currentRound.get() + 1);
+}
+
+WordLogic.prototype.giveWord = function(player, word) {
+  this.pool.set(_.without(this.pool.get(), word));
+  player["currentWord"] = word;
+}
+WordLogic.prototype.returnWord = function(player) {
+  this.pool.set(this.pool.get().concat([player["currentWord"]]));
+  player["currentWord"] = "empty";
+}
+WordLogic.prototype.answerWord = function(pos, word) {
+  this.pool.set(_.without(this.pool.get(), word));
+  var newAnswer = this.answer.get();
+  newAnswer[pos-1] = word;
+  this.answer.set(newAnswer);
+}
+WordLogic.prototype.removeWord = function(pos) {
+  var word = this.answer.get()[pos-1];
+  var newAnswer = this.answer.get();
+  newAnswer[pos-1] = undefined;
+
+  this.answer.set(newAnswer);
+  this.pool.set(this.pool.get().concat([word]));
+}
+
+WordLogic.prototype.roundSolved = function() {
+  if (this.pool.get().length == 0) {
+    return _.every(this.answer.get(), function (word, idx) {
+      return word["order"] == (idx+1);
+    });
+  }
+}
+
+
 
 WordLogic.prototype.generate = function(round) {
   'use strict';
@@ -11,30 +66,35 @@ WordLogic.prototype.generate = function(round) {
 
   var message = this._getMessage(round);
   var shuffledMessage = this._shuffleArray(message);
-  var maxWordsPerUser = Math.ceil(message.length / this.players.length);
+  var maxWordsPerUser = Math.ceil(message.length / (this.players.length - 1));
 
-  var results = this.players.map(function(player, idx) {
-    var words = shuffledMessage.splice(0,maxWordsPerUser);
-    var cypher = self._generateCypher(round);
+  var result = this.players.map(function(player, idx) {
+                  var words = [];
+                  var cypher = [];
 
-    words.forEach(function(word) {
-      word["crypted"] = self._crypt(word["word"], cypher);
-    });
+                  if (player != self.master.get()) {
+                    words = shuffledMessage.splice(0,maxWordsPerUser);
+                    cypher = self._generateCypher(round);
 
-    return {
-            player: player,
-            cypher: cypher,
-            words: words
-          };
-  });
+                    words.forEach(function(word) {
+                      word["crypted"] = self._crypt(word["word"], cypher);
+                    });
+                  }
 
-  return results;
+                  return {
+                          player: player,
+                          cypher: cypher,
+                          words: words
+                        };
+                });
+
+  return result;
 };
 
 WordLogic.prototype._getMessage = function(round) {
   'use strict';
 
-  var numWordsInMessage = this.players.length * round;
+  var numWordsInMessage = (this.players.length - 1) * round;
 
   var message = _.sample(
     Messages.find(
@@ -76,6 +136,25 @@ WordLogic.prototype._crypt = function(word, cypher) {
 
   return result;
 };
+
+WordLogic.prototype._nextMaster = function() {
+  'use strict';
+
+  if (this.players[this.players.length - 1] == this.master.get()) {
+    this.master.set(this.players[0]);
+  }
+  else {
+    for ( var i = 1; i < this.players.length; i++ ) {
+      if (this.players[i-1] == this.master.get()) {
+        this.master.set(this.players[i]);
+        break;
+      }
+    }
+  }
+
+  return this.master.get();
+};
+
 
 WordLogic.prototype._shuffleArray = function(array) {
   'use strict';
