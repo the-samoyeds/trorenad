@@ -8,8 +8,18 @@
   display: inline-block;
 }
 
-#bottom-solve li {
-  display: inline-block;
+#bottom-solve {
+  height: 100%;
+
+  & ol,
+  & li {
+    display: inline-block;
+    height: 100%;
+  }
+}
+
+#bottom-players {
+  height: 100%;
 }
 
 .players-single-line {
@@ -40,4 +50,5 @@
 .player span {
   font-size: 150%;
   display: block;
+  text-align: center;
 }

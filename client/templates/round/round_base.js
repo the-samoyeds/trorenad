@@ -2,13 +2,13 @@ Template.RoundBase.rendered = function () {
   $('.carousel').carousel({
     interval: false
   });
-}
+};
 
 Template.RoundBase.helpers({
   isMaster: function() {
     return Meteor.player().master;
   }
-})
+});
 
 
 Template.RoundBase.events({
@@ -36,7 +36,12 @@ Template.RoundBase.onRendered(function(){
   dragula([document.querySelector("#top-defaults"), document.querySelector("#bottom-solve")]).on('drag', function (el) {
 
   }).on('drop', function (el, target, source, sibling) {
-
+    var paragraph = $('#bottom-solve').parent().find('p');
+    if ($('#bottom-solve').children().length > 0) {
+      paragraph.addClass('hidden');
+    } else {
+      paragraph.removeClass('hidden');
+    }
   }).on('over', function (el, container) {
 
   }).on('out', function (el, container) {
