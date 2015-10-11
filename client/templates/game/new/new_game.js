@@ -1,6 +1,10 @@
 Template.NewGame.helpers({
   getGame: function() {
     return Session.get('game');
+  },
+
+  gameOn: function () {
+    return Session.get('gameon');
   }
 });
 
@@ -19,5 +23,17 @@ Template.FoundGame.helpers({
 
   getCurrentRoute: function () {
     return Router.current().route.getName();
+  }
+});
+
+
+Template.NewGame.events({
+  'click button[type="submit"]': function () {
+    Session.set('gameon', true);
+
+    var game = Session.get('game')
+    game['logic'] = new WordLogic([{name: "B"},{name: "M"},{name: "L"}]);
+    game['logic'].startRound();
+    Session.set('game', game);
   }
 });
