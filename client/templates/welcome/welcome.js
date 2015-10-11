@@ -1,7 +1,7 @@
 Template.Welcome.events({
   'click a[name="new-game"]': function(ev) {
     ev.preventDefault();
-    
+
     Meteor.call('addGame', function(err, _id) {
       if (err) {
         return console.error(err);
@@ -24,18 +24,10 @@ Template.Welcome.events({
 
 Template.Welcome.helpers({
   getUserPicture: function() {
-    if ( Meteor.user().services.facebook) {
-      return 'http://graph.facebook.com/' +  Meteor.user().services.facebook.id + '/picture/?type=large';
-    } else if ( Meteor.user().services.google) {
-      return  Meteor.user().services.google.picture;
-    }
+    return Meteor.player().profile.pictureUrl;
   },
 
   getUserName: function() {
-    if ( Meteor.user().services.facebook) {
-      return  Meteor.user().services.facebook.first_name;
-    } else if ( Meteor.user().services.google) {
-      return  Meteor.user().services.google.given_name;
-    }
+    return Meteor.player().profile.firstName;
   }
 });

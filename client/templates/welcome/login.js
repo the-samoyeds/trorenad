@@ -4,7 +4,13 @@ Template.Login.events({
       if (err) {
         throw new Meteor.Error("Facebook login failed " + err);
       } else {
-        window.location="/";
+        Meteor.call('loginPlayer', function(err) {
+          if (err) {
+            throw new Meteor.Error("Facebook login failed " + err);
+          } else {
+            Router.go("/");
+          }
+        });
       }
     });
   },
@@ -14,7 +20,13 @@ Template.Login.events({
       if (err) {
         throw new Meteor.Error("Google login failed " + err);
       } else {
-        window.location="/";
+        Meteor.call('loginPlayer', function(err) {
+          if (err) {
+            throw new Meteor.Error("Facebook login failed " + err);
+          } else {
+            Router.go("/");
+          }
+        });
       }
     });
   }

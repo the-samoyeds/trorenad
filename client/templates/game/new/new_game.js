@@ -13,8 +13,8 @@ Template.FoundGame.helpers({
     return Session.get('game')._id;
   },
 
-  getParticipants: function() {
-    return Session.get('participants');
+  getPlayers: function() {
+    return Session.get('players');
   },
 
   isCreator: function() {
