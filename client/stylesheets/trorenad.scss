@@ -79,3 +79,18 @@ code {
 .word-wrap {
   word-wrap: break-word;
 }
+
+input[type=text] {
+  text-align: center;
+  font-family: monospace;
+  font-size: 300%;
+  letter-spacing: 5px;
+  background: black;
+  color: white;
+  border: 0;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+  }
+}

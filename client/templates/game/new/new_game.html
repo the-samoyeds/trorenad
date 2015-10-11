@@ -31,26 +31,24 @@
 </template>
 
 <template name="FoundGame">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <code class="game">{{ getGameId }}</code>
-      </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <code class="game">{{ getGameId }}</code>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-xs-12">
-        {{> QR target=getCurrentRoute }}
-      </div>
+  <div class="row">
+    <div class="col-xs-12">
+      {{> QR target=getCurrentRoute }}
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="players">
-          {{#each getPlayers}}
-          {{> Player name=profile.firstName pictureUrl=profile.pictureUrl }}
-          {{/each}}
-        </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="players">
+        {{#each getPlayers}}
+        {{> Player name=profile.firstName pictureUrl=profile.pictureUrl }}
+        {{/each}}
       </div>
     </div>
   </div>
