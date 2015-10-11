@@ -1,5 +1,5 @@
 /* CSS declarations go here */
-
+<<<<<<< HEAD
 html * {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
@@ -8,4 +8,14 @@ html * {
 .row {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.btn-facebook {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-facebook:hover {
+  border-color: #F00;
 }

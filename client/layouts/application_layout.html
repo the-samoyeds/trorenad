@@ -1,5 +1,9 @@
 <template name="ApplicationLayout">
   <body>
-    {{> yield}}
+    {{> Login}}
+
+    {{#if currentUser}}
+      {{> yield}}
+    {{/if}}
   </body>
 </template>
