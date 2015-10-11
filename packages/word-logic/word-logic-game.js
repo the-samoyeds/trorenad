@@ -66,6 +66,10 @@ WordLogic.prototype.removeWord = function(pos) {
 };
 
 WordLogic.prototype.validateSentence = function(sentence) {
+  if (this.game().pool.length > 0) {
+    return false;
+  }
+
   var answers = this.game().answer;
 
   var sortedAnswers = _.sortBy(answers, function(word){
@@ -73,9 +77,6 @@ WordLogic.prototype.validateSentence = function(sentence) {
                       });
 
   var toCompare = _.reduce(sortedAnswers, function(memo, word){ return memo + " " + word.crypted; }, "");
-
-  console.log(sentence);
-  console.log(toCompare);
 
   return sentence.trim() == toCompare.trim();
 };
