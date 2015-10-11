@@ -35,7 +35,10 @@ WordLogic.prototype.startRound = function() {
 WordLogic.prototype.endRound = function() {
   this._nextMaster();
 
-  Games.update({_id: game._id}, { $set: { currentRound: this.game().currentRound + 1 }});
+  Games.update({_id: this.gameId}, {
+    $inc: { currentRound: 1 },
+    $set: { pool: [], answer: [], started: false }
+  });
 };
 
 WordLogic.prototype.giveWord = function(player, word) {
@@ -188,22 +191,30 @@ WordLogic.prototype._nextMaster = function() {
   var players = this.players();
   var master = null;
 
-  if (players[players.length - 1].master) {
-    Players.update({_id: players[players.length - 1]._id}, { $set: { master: false }});
-    Players.update({_id: players[0]._id}, { $set: { master: true }});
-    master = players[0];
-  }
-  else {
+  // if (players[players.length - 1].master) {
+  //   Players.update({_id: players[players.length - 1]._id}, { $set: { master: false }});
+  //   Players.update({_id: players[0]._id}, { $set: { master: true }});
+  //   master = players[0];
+  // }
+  // else {
+  //
+  //   for ( var i = 1; i < players.length; i++ ) {
+  //     if (players[i-1].master) {
+  //       Players.update({_id: players[i-1]._id}, { $set: { master: false }});
+  //       Players.update({_id: players[i]._id}, { $set: { master: true }});
+  //       master = players[i];
+  //       break;
+  //     }
+  //   }
+  // }
 
-    for ( var i = 1; i < players.length; i++ ) {
-      if (players[i-1].master) {
-        Players.update({_id: players[i-1]._id}, { $set: { master: false }});
-        Players.update({_id: players[i]._id}, { $set: { master: true }});
-        master = players[i];
-        break;
-      }
-    }
-  }
+  _.each(players, function(player) {
+    Players.update({_id: player._id}, { $set: { master: false }});
+  });
+
+  var master = _.sample(players);
+
+  Players.update({_id: master._id}, { $set: { master: true }});
 
   return master;
 };
