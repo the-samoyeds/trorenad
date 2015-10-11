@@ -1,5 +1,5 @@
 Template.RoundPlayers.helpers({
   players: function() {
-    return Session.get('game').players;
+    return Games.findOne(Session.get('game')._id).getPlayers();
   }
 });
