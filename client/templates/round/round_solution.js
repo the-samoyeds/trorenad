@@ -18,6 +18,9 @@ Template.RoundSolution.events({
     var game = Games.findOne(Session.get("game")._id);
     var logic = new WordLogic(game, true);
     if (logic.validateSentence(sentence)) {
+      logic.endRound();
+      logic.startRound();
+
       alert("SOLVED BITCHES!");
     }
 
