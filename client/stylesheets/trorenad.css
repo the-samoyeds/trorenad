@@ -56,13 +56,23 @@ code {
   font-size: 30px;
 }
 
+.btn-menu {
+    height: 44px;
+    width: 312px;
+    border-radius: 0px;
+    color: white;
+    font-size: 20px;
+    color: white;
+    position: relative;
+}
+
 .btn-img {
   width: 44px;
   height: 44px;
-  border-radius: 0px;
-  background-size: 20px 20px;
-  background-repeat: no-repeat;
-  background-position: center;
+  position: absolute;
+  padding: 10px;
+  top: -1px;
+  left: -1px;
 }
 
 .btn-text {
@@ -70,8 +80,7 @@ code {
   height: 44px;
   border-radius: 0px;
   margin-left: -3px;
-  font-size: 20px;
-  color: white;
+
 }
 
 .glyphicon.glyphicon-massive {
