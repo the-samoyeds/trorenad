@@ -15,8 +15,16 @@ Package.onUse(function(api) {
 
   api.versionsFrom('1.2');
   // api.use('ecmascript');
-  api.addFiles('word-logic.js');
+  api.addFiles([
+    'startup.js',
+    'word-logic.js'
+  ]);
+
+  api.addAssets('messages.json', 'server')
+
+  // api.addFiles('');
   api.export('WordLogic', ['client', 'server']);
+  api.export('Messages',['server','client']);
 });
 
 Package.onTest(function(api) {
