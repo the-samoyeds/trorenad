@@ -1,31 +1,35 @@
 <template name="WordGuess">
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    CLICK WORD
-  </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          CLICK WORD
+        </button>
+      </div>
+    </div>
+  </div>
 
   <div class="modal modal-guess fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <!-- <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
-          {{> Word text="THIS" mode="white"}}
+          {{> Word text=word.text mode=word.mode}}
         </div>
         <div class="modal-body">
-          <div class="container">
-            <div class="row">
-              <div class="col-xm-12">
-                <input type="text" name="name" value="">
-              </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <input class="decipher" type="text" name="name" value="" placeholder="?"
+                maxlength="{{lengthOf word.text}}" size="{{lengthOf word.text}}">
             </div>
-            <div class="row">
-              <div class="col-xm-12">
-                <ul class="players">
-                  <li>{{> Player name="Bradley" pictureUrl="images/man.png" notDeciphered="true"}}</li>
-                  <li>{{> Player name="Marylia" pictureUrl="images/woman.png" notDeciphered="true"}}</li>
-                  <li>{{> Player name="Luiz" pictureUrl="images/man.png" deciphered="true"}}</li>
-                  <li>{{> Player name="Henrique" pictureUrl="images/man.png" notDeciphered="true"}}</li>
-                </ul>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <ul class="players players-single-line" style="height: 200px; border-radius: 6px;">
+                <li>{{> Player name="Bradley" pictureUrl="/images/man.png" notDeciphered="true"}}</li>
+                <li>{{> Player name="Marylia" pictureUrl="/images/woman.png" notDeciphered="true"}}</li>
+                <li>{{> Player name="Luiz" pictureUrl="/images/man.png" deciphered="true"}}</li>
+                <li>{{> Player name="Henrique" pictureUrl="/images/man.png" notDeciphered="true"}}</li>
+              </ul>
             </div>
           </div>
         </div>

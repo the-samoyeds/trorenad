@@ -6,7 +6,8 @@
 
 .word code {
   padding: 10px;
-  font-size: 4vw;
+  // font-size: 4vw;
+  font-size: 200%;
   letter-spacing: 5px;
 }
 
@@ -72,9 +73,16 @@
 /******** RoundWords ********/
 
 
-/******** RoundWords ********/
+/******** WordGuess ********/
 .modal-guess {
   text-align: center;
+
+  .modal-dialog {
+    // margin: 100px;
+    // margin-left: auto;
+    // margin-right: auto;
+    // width: 85%;
+  }
 }
 
 .modal-guess .modal-header,

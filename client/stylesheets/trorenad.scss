@@ -83,14 +83,23 @@ code {
 input[type=text] {
   text-align: center;
   font-family: monospace;
-  font-size: 300%;
-  letter-spacing: 5px;
-  background: black;
-  color: white;
   border: 0;
-  border-radius: 4px;
 
   &:focus {
     outline: none;
+  }
+
+  &.code {
+    font-size: 300%;
+    letter-spacing: 5px;
+    background: black;
+    color: white;
+    border-radius: 4px;
+  }
+
+  &.decipher {
+    font-size: 200%;
+    color: black;
+    border-bottom: 1px solid black;
   }
 }
