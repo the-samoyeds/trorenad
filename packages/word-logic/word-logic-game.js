@@ -15,36 +15,46 @@ WordLogic = function(game) {
 
 WordLogic.prototype.game = function() {
   return Games.findOne(this.gameId);
-}
+};
 
 WordLogic.prototype.players = function() {
   return this.game().getPlayers();
-}
+};
 
 WordLogic.prototype.startRound = function() {
   var game = this.generate(this.game().currentRound);
 
   var words = [];
-  _.each(game, function(g) { words = words.concat(g["words"]); });
+  _.each(game, function(g) { words = words.concat(g.words); });
 
 
-  Games.update({_id: this.gameId}, { $set: { pool: words, answer: Array(words.length), started: true }});
-}
+  Games.update({
+    _id: this.gameId
+  }, {
+    $set: {
+      pool: words,
+      answer: Array(words.length),
+      started: true
+    }
+  });
+};
 
 WordLogic.prototype.endRound = function() {
   this._nextMaster();
 
   Games.update({_id: game._id}, { $set: { currentRound: this.game().currentRound + 1 }});
-}
+};
 
 WordLogic.prototype.giveWord = function(player, word) {
   Games.update({_id: game._id}, { $set: { pool: _.without(this.game().pool, word) }});
   Players.update({_id: player._id}, { $set: { currentWord: word }});
-}
+};
+
 WordLogic.prototype.returnWord = function(player) {
-  Games.update(game, { $set: { pool: this.game().pool.concat([player["currentWord"]]) }});
+  Games.update(game, { $set: { pool: this.game().pool.concat([player.currentWord]) }});
   Players.update( player, { $set: { currentWord: "empty" }});
-}
+};
+
 WordLogic.prototype.answerWord = function(pos, word) {
   var newAnswer = this.game().answer;
   newAnswer[pos-1] = word;
@@ -53,7 +63,8 @@ WordLogic.prototype.answerWord = function(pos, word) {
           pool: _.without(this.game().pool, word),
           answer: newAnswer
    }});
-}
+};
+
 WordLogic.prototype.removeWord = function(pos) {
   var word = this.game().answer[pos-1];
   var newAnswer = this.game().answer;
@@ -63,27 +74,21 @@ WordLogic.prototype.removeWord = function(pos) {
           pool: this.game().pool.concat(([word])),
           answer: newAnswer
    }});
-}
+};
 
 WordLogic.prototype.roundSolved = function() {
-  if (this.game().pool.length == 0) {
+  if (this.game().pool.length === 0) {
     return _.every(this.game().answer, function (word, idx) {
-      return word["order"] == (idx+1);
+      return word.order == (idx+1);
     });
   }
-}
-
-
+};
 
 WordLogic.prototype.generate = function(round) {
   'use strict';
 
-console.log(this.game());
-
   var self = this;
   var players = this.players();
-
-console.log(players);
 
   var message = this._getMessage(round);
   var shuffledMessage = this._shuffleArray(message);
@@ -91,25 +96,25 @@ console.log(players);
   var maxWordsPerUser = Math.ceil(message.length / (players.length - 1));
 
   var result = players.map(function(player, idx) {
-                  var words = [];
-                  var cypher = [];
-                  if (! player.master) {
-                    words = shuffledMessage.splice(0,maxWordsPerUser);
-                    cypher = self._generateCypher(round);
+    var words = [];
+    var cypher = [];
+    if (! player.master) {
+      words = shuffledMessage.splice(0,maxWordsPerUser);
+      cypher = self._generateCypher(round);
 
-                    words.forEach(function(word) {
-                      word["crypted"] = self._crypt(word["word"], cypher);
-                    });
-                  }
+      words.forEach(function(word) {
+        word.cypted = self._crypt(word.word, cypher);
+      });
+    }
 
-                  Players.update({_id: player._id}, { $set: { cypher: cypher, words: words }});
+    Players.update({_id: player._id}, { $set: { cypher: cypher, words: words }});
 
-                  return {
-                          player: player,
-                          cypher: cypher,
-                          words: words
-                        };
-                });
+    return {
+      player: player,
+      cypher: cypher,
+      words: words
+    };
+  });
 
   return result;
 };
@@ -118,20 +123,21 @@ WordLogic.prototype._getMessage = function(round) {
   'use strict';
 
   var numWordsInMessage = (this.players().length - 1) * round;
-console.log(numWordsInMessage);
   var message = _.sample(
-    Messages.find(
-      { words: { $gte: numWordsInMessage, $lt: (numWordsInMessage + this.players().length) } }
-    ).fetch());
+    Messages.find({ words: {
+      $gte: numWordsInMessage,
+      $lt: (numWordsInMessage + this.players().length)
+    }}).fetch()
+  );
 
-  var words = message["message"].toUpperCase().split(" ");
+  var words = message.message.toUpperCase().split(" ");
 
-  for ( var i = 0; i < words.length; i++ ) {
+  for (var i = 0; i < words.length; i++) {
     words[i] = { word: words[i], order: i+1 };
   }
 
   return words;
-}
+};
 
 WordLogic.prototype._generateCypher = function(round) {
   'use strict';
@@ -141,7 +147,7 @@ WordLogic.prototype._generateCypher = function(round) {
 
   var cypher = {};
 
-  for ( var i = 0; i < symbols.length; i++ ) {
+  for (var i = 0; i < symbols.length; i++) {
     cypher[symbols[i]] = shuffledSymbols[i];
   }
 
@@ -153,7 +159,7 @@ WordLogic.prototype._crypt = function(word, cypher) {
 
   var result = "";
 
-  for ( var i = 0; i < word.length; i++ ) {
+  for (var i = 0; i < word.length; i++) {
     result += cypher[word.charAt(i)];
   }
 
@@ -186,7 +192,6 @@ WordLogic.prototype._nextMaster = function() {
   return master;
 };
 
-
 WordLogic.prototype._shuffleArray = function(array) {
   'use strict';
 
@@ -197,4 +202,4 @@ WordLogic.prototype._shuffleArray = function(array) {
     array[j] = temp;
   }
   return array;
-}
+};
