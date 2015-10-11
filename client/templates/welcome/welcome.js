@@ -7,6 +7,14 @@ Template.Welcome.events({
     });
   },
 
+  'click #google-login': function(event) {
+    Meteor.loginWithGoogle({}, function(err){
+      if (err) {
+        throw new Meteor.Error("Google login failed");
+      }
+    });
+  },
+
   'click #logout': function(event) {
     Meteor.logout(function(err){
       if (err) {

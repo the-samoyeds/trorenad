@@ -15,11 +15,20 @@
     <div class="row">
       <div class="col-xs-12">
         {{#if currentUser}}
-          {{currentUser.services.facebook.name}} -
-          {{currentUser.services.facebook.gender}}
+          {{currentUser.services.facebook.name}}
+          {{currentUser.services.google.name}}
           <button id="logout">Logout</button>
         {{else}}
-          <button id="facebook-login" class="btn btn-facebook"></button>
+          <div class="row">
+            <div class="col-xs-12">
+              <button id="facebook-login" class="btn btn-facebook"></button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <button id="google-login" class="btn btn-google"></button>
+            </div>
+          </div>
         {{/if}}
       </div>
     </div>
