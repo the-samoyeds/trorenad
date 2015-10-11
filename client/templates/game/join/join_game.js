@@ -1,5 +1,5 @@
 Template.JoinGame.events({
-  'click button[name="join-game"]': function(ev) {
+  'click a[name="join-game"]': function(ev) {
     ev.preventDefault();
 
     var gameCode = $('input[name="gameName"]').val();
