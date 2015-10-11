@@ -32,6 +32,7 @@
   color: black;
   background-color: white;
   border-radius: 5px;
+  margin-top: 5px;
 }
 
 /******** RoundBase ********/
@@ -49,6 +50,16 @@
 }
 
 .lower-panel {
+  & .carousel.slide,
+  & .carousel.slide .carousel-inner {
+    height: 100%;
+  }
+  & .carousel.slide .item {
+    height: 95%;
+  }
+
+  & .carousel.slide .row-80 { height: 80%; }
+  & .carousel.slide .row-20 { height: 20%; }
 }
 
 

@@ -1,13 +1,11 @@
 <template name="RoundPlayers">
-  <div class="round-base">
-    <div id='bottom-defaults' class='container'>
-  </div>
+  <div class="round-base text-center">
     <ul class="players" id="bottom-players">
       {{#each players}}
         {{#if currentWord}}
-          <li>{{> Player name=name pictureUrl=profile.pictureUrl word=currentWord}}</li>
+          <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl word=currentWord}}</li>
         {{else}}
-          <li>{{> Player name=name pictureUrl=profile.pictureUrl }}</li>
+          <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl }}</li>
         {{/if}}
       {{/each}}
     </ul>
