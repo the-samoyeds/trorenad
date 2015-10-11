@@ -15,8 +15,8 @@ Template.FoundGame.helpers({
     return Session.get('game')._id;
   },
 
-  getParticipants: function() {
-    return Session.get('participants');
+  getPlayers: function() {
+    return Session.get('players');
   },
 
   isCreator: function() {
@@ -35,6 +35,7 @@ Template.NewGame.events({
     // var game = Session.get("game");
     console.log(game);
 
+    // game.players.push(Meteor.userId());
 
     // var logic = new WordLogic([{name: "B"},{name: "M"},{name: "L"},{name: "H"},{name: "A"},{name: "C"}]);
     var logic = new WordLogic(game);
