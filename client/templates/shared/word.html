@@ -1,5 +1,5 @@
 <template name="Word">
-  <div class="word word-{{mode}} {{#if wrap}}word-wrap{{/if}}">
-    <code id="word-code">{{text}}</code>
+  <div id="card-word-{{text}}" class="word word-{{mode}} {{#if wrap}}word-wrap{{/if}} word-card">
+    <code id="word-{{text}}">{{text}}</code>
   </div>
 </template>

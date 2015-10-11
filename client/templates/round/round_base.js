@@ -14,7 +14,26 @@ Template.RoundBase.helpers({
 Template.RoundBase.events({
   'click .carousel-control': function () {
     $('.carousel-control').toggleClass('hidden');
+  },
+  'click .word-card': function (event) {
+    var timeoutId;
+    $('#card-'+event.toElement.id).removeClass("word-green");
+    $('#card-'+event.toElement.id).removeClass("word-red");
+    $('#card-'+event.toElement.id).removeClass("word-white");
+    $('#card-'+event.toElement.id).addClass("word-gray");
+
+    $('.word-card').mousedown(function() {
+      timeoutId = setTimeout(function() {
+        console.log("Open the word notes");
+      }, 1000);
+    }).bind('mouseup mouseleave', function() {
+      clearTimeout(timeoutId);
+    });
+  },
+  'click .player': function (event) {
+    console.log(event.toElement.parentElement.id); //userId
   }
+
 });
 
 Template.RoundBase.onRendered(function(){

@@ -1,6 +1,6 @@
 <template name="Player">
-  <div class="player">
-    <img src="{{pictureUrl}}" class="img-circle" alt="{{name}} profile picutre" />
+  <div class="player" id="{{userId}}">
+    <img src="{{pictureUrl}}" class="img-circle" alt="{{name}} profile picture" />
     <span>{{name}}</span>
     {{#if deciphered}}
     <span class="glyphicon glyphicon-massive glyphicon-ok" aria-hidden="true"></span>
