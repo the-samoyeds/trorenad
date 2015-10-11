@@ -24,7 +24,7 @@ Template.FoundGame.helpers({
   },
 
   getCurrentRoute: function () {
-    return Router.current().route.getName();
+    return Router.current().url;
   }
 });
 
