@@ -1,16 +1,14 @@
 <template name="RoundSolution">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 text-center">
-        <ol>
+      <div class="col-xs-12 text-center" id="bottom-solve">
         {{#each slots}}
           {{#if this}}
-            <li>{{ this }}</li>
+            <div>{{ this }}</div>
           {{else}}
-            <li>NEEDS CARD</li>
+            <div>NEEDS CARD</div>
           {{/if}}
         {{/each}}
-        </ol>
       </div>
     </div>
     <div class="row">
