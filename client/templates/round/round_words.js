@@ -6,6 +6,6 @@ Template.RoundWords.events({
 
 Template.RoundWords.helpers({
   getPool: function() {
-    return Session.get('game')['logic'].pool.curValue;
+    return Session.get('game').pool;
   }
 });
