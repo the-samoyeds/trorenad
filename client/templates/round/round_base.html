@@ -1,4 +1,5 @@
 <template name="RoundBase">
+  {{#if isMaster}}
     <div class="round-base">
       <div class="round-panel upper-panel">
         {{> RoundWords}}
@@ -28,4 +29,7 @@
         </div>
       </div>
     </div>
+  {{else}}
+    {{> WordGuess}}
+  {{/if}}
 </template>

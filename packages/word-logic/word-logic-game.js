@@ -28,7 +28,7 @@ WordLogic.prototype.startRound = function() {
   _.each(game, function(g) { words = words.concat(g["words"]); });
 
 
-  Games.update({_id: this.gameId}, { $set: { pool: words, answer: Array(words.length) }});
+  Games.update({_id: this.gameId}, { $set: { pool: words, answer: Array(words.length), started: true }});
 }
 
 WordLogic.prototype.endRound = function() {

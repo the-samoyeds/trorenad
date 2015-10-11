@@ -4,6 +4,13 @@ Template.RoundBase.rendered = function () {
   });
 }
 
+Template.RoundBase.helpers({
+  isMaster: function() {
+    return Meteor.player().master;
+  }
+})
+
+
 Template.RoundBase.events({
   'click .carousel-control': function () {
     $('.carousel-control').toggleClass('hidden');
