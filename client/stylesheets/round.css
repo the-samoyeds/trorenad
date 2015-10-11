@@ -1,0 +1,61 @@
+/******** Word ********/
+.word code {
+  padding: 10px;
+  font-size: 200%;
+  letter-spacing: 5px;
+  line-height: 250%;
+}
+
+.word.word-white code {
+  background: black;
+  color: white;
+}
+
+.word.word-red code {
+  background: red;
+  color: white;
+}
+
+.word.word-green code {
+  background: green;
+  color: white;
+}
+
+
+/******** RoundBase ********/
+.round-base {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.round-panel {
+  height: 50%;
+}
+
+.upper-panel {
+}
+
+.lower-panel {
+}
+
+
+/******** RoundWords ********/
+.round-words {
+  text-align: center;
+  height: 100%;
+}
+
+.round-words li {
+  display: inline-block;
+}
+
+
+/******** RoundPlayers ********/
+.round-base .room-players {
+  position: relative;
+  height: 100%;
+}
+
+
+/******** RoundWords ********/
