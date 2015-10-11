@@ -10,11 +10,27 @@ html * {
 }
 
 .btn-facebook {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  background-color: black;
+  background-image: url("images/fbButton.png");
+  background-size: 268px 44px;
+  width: 268px;
+  height: 44px;
+  border-left-width: 0px;
 }
 
 .btn-facebook:hover {
-  border-color: #F00;
+  opacity: 0.7;
+}
+
+.btn-google {
+  background-color: black;
+  background-image: url("images/googleButton.png");
+  background-size: 268px 44px;
+  width: 268px;
+  height: 44px;
+  border-left-width: 0px;
+}
+
+.btn-google:hover {
+  opacity: 0.7;
 }
