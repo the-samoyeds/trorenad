@@ -67,10 +67,13 @@ Template.RoundBase.events({
     $('.carousel-control').toggleClass('hidden');
   },
   'click .player': function (event) {
-    var game = Games.findOne(Session.get("game")._id);
-    var logic = new WordLogic(game, true);
+    if (Meteor.player().userId == this.userId) {
+      return;
+    }
 
     var player = Players.findOne({userId: this.userId});
+    var game = Games.findOne(Session.get("game")._id);
+    var logic = new WordLogic(game, true);
 
     logic.giveWord(player, Session.get("selectedWord"));
   },

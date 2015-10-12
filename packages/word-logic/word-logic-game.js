@@ -49,6 +49,8 @@ WordLogic.prototype.giveWord = function(player, code) {
   Games.update({_id: this.gameId}, {
     $pull: { pool: { crypted: code } }
   });
+
+  Session.set("selectedWord", null);
 };
 
 

@@ -1,10 +1,18 @@
 Template.RoundDeciphering.events({
   'click span.glyphicon-ok': function (event) {
+    if (! Meteor.player().currentWord) {
+      return;
+    }
+
     var game = Games.findOne(Session.get("game")._id);
     var logic = new WordLogic(game, true);
     logic.solveWord();
   },
   'click span.glyphicon-remove': function (event) {
+    if (! Meteor.player().currentWord) {
+      return;
+    }
+    
     var game = Games.findOne(Session.get("game")._id);
     var logic = new WordLogic(game, true);
     logic.returnWord();

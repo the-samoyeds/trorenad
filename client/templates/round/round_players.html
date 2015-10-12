@@ -1,10 +1,14 @@
 <template name="RoundPlayers">
   <ul class="players players-single-line" id="bottom-players">
     {{#each players}}
-      {{#if currentWord}}
-        <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId word=currentWord.crypted}}</li>
+      {{#if currentPlayer}}
+        <li style="opacity:0.3;">{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId disabled=true }}</li>
       {{else}}
-        <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId }}</li>
+        {{#if currentWord}}
+          <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId word=currentWord.crypted}}</li>
+        {{else}}
+          <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId }}</li>
+        {{/if}}
       {{/if}}
     {{/each}}
   </ul>
