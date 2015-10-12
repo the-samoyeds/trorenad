@@ -1,34 +1,23 @@
+/* prevent dot from appearing while being dragged */
+li.gu-mirror { list-style-type: none; }
+
 /******** Word ********/
 .word {
   margin-top: 10px;
   margin-bottom: 10px;
-}
 
-.word code {
-  padding: 10px;
-  // font-size: 4vw;
-  font-size: 200%;
-  letter-spacing: 5px;
-}
+  code {
+    padding: 10px;
+    font-size: 200%;
+    letter-spacing: 5px;
+    color: white;
+    cursor: pointer;
+  }
 
-.word.word-white code {
-  background: black;
-  color: white;
-}
-
-.word.word-red code {
-  background: red;
-  color: white;
-}
-
-.word.word-green code {
-  background: green;
-  color: white;
-}
-
-.word.word-gray code {
-  background: gray;
-  color: white;
+  &.word-white code { background: black; }
+  &.word-red code { background: red; }
+  &.word-green code { background: green; }
+  &.word-gray code { background: gray; }
 }
 
 .small-word {
