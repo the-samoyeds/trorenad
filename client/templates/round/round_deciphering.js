@@ -2,7 +2,6 @@ Template.RoundDeciphering.events({
   'click span.glyphicon-ok': function (event) {
     var game = Games.findOne(Session.get("game")._id);
     var logic = new WordLogic(game, true);
-
     logic.solveWord();
   },
   'click span.glyphicon-remove': function (event) {

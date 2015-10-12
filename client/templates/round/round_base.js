@@ -64,22 +64,6 @@ Template.RoundBase.events({
   'click .carousel-control': function () {
     $('.carousel-control').toggleClass('hidden');
   },
-  // 'click .word-card': function (event) {
-  //   var timeoutId;
-  //
-  //   $("#top-defaults li div").removeClass("word-gray").addClass("word-green");
-  //   $('#card-'+event.toElement.id).removeClass("word-green").addClass("word-gray");
-  //
-  //     console.log("WORD SELECTED: " + this.text);
-  //
-  //   $('.word-card').mousedown(function() {
-  //     timeoutId = setTimeout(function() {
-  //       console.log("Open the word notes");
-  //     }, 1000);
-  //   }).bind('mouseup mouseleave', function() {
-  //     clearTimeout(timeoutId);
-  //   });
-  // },
   'click .player': function (event) {
     var game = Games.findOne(Session.get("game")._id);
     var logic = new WordLogic(game, true);
