@@ -24,7 +24,7 @@ Template.FoundGame.helpers({
   },
 
   getCurrentRoute: function () {
-    return Router.current().url;
+    return encodeURI(Router.current().url);
   }
 });
 
@@ -35,5 +35,13 @@ Template.NewGame.events({
 
     logic = new WordLogic(game);
     logic.startRound();
+  },
+
+  'click a[name="leave-game"]': function(ev) {
+    ev.preventDefault();
+    
+    Meteor.call('leaveGame', Session.get("game")._id, function(err) {
+      Router.go('/');
+    });
   }
 });

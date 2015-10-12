@@ -8,9 +8,7 @@ Template.RoundBase.onRendered(function () {
   });
 
   dragula([
-    document.querySelector("#top-defaults"),
     document.querySelector("#bottom-solve"),
-    document.querySelector("#bottom-players"),
   ]).on('drag', function (el) {
 
   }).on('drop', function (el, target, source, sibling) {
