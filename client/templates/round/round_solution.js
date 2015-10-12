@@ -17,17 +17,13 @@ Template.RoundSolution.events({
 
     var game = Games.findOne(Session.get("game")._id);
     var logic = new WordLogic(game, true);
+    logic.endRound();
+    logic.startRound();
+
     if (logic.validateSentence(sentence)) {
-      logic.endRound();
-      logic.startRound();
-
-      alert("SOLVED BITCHES!");
+      alert("Congratulations! You solved the sentence: " + logic.getRealSentence());
+    } else {
+      alert("Wrong answer. The correct sentence is: " + logic.getRealSentence() + ". Good luck next time!");
     }
-
-    // var game = Games.findOne(Session.get("game")._id);
-    // var logic = new WordLogic(game, true);
-    // if (logic.roundSolved()) {
-    //   alert("SOLVED BITCHES!");
-    // }
   }
 });

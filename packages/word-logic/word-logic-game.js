@@ -29,7 +29,7 @@ WordLogic.prototype.startRound = function() {
   var words = [];
   _.each(game, function(g) { words = words.concat(g.words); });
 
-  var sortedAnswers = _.sortBy(words, function(word){ return word.pos; });
+  var sortedAnswers = _.sortBy(words, function(word){ return word.order; });
   var fullAnswer = _.reduce(sortedAnswers, function(memo, word){ return memo + " " + word.word; }, "").trim();
 
   Games.update({_id: this.gameId}, { $set: { pool: words, answer: [], fullAnswer: fullAnswer, started: true }});
@@ -98,6 +98,10 @@ WordLogic.prototype.removeWord = function(pos) {
   });
 };
 
+WordLogic.prototype.getRealSentence = function() {
+  return this.game().fullAnswer;
+};
+
 WordLogic.prototype.validateSentence = function(sentence) {
   if (this.game().pool.length > 0) {
     return false;
@@ -106,7 +110,7 @@ WordLogic.prototype.validateSentence = function(sentence) {
   var answers = this.game().answer;
 
   var sortedAnswers = _.sortBy(answers, function(word){
-                        return word.pos;
+                        return word.order;
                       });
 
   var toCompare = _.reduce(sortedAnswers, function(memo, word){ return memo + " " + word.crypted; }, "");
