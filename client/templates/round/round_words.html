@@ -1,7 +1,12 @@
 <template name="RoundWords">
   <ul class="round-words" id="top-defaults">
     {{#each getPool}}
-      <li>{{> Word text=crypted mode="green"}}</li>
+      {{#if isSelected}}
+        <li>{{> Word text=crypted mode="red"}}</li>
+      {{else}}
+        <li>{{> Word text=crypted mode="green"}}</li>
+      {{/if}}
+
     {{/each}}
   </ul>
 </template>

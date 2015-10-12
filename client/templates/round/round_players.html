@@ -3,7 +3,7 @@
     <ul class="players" id="bottom-players">
       {{#each players}}
         {{#if currentWord}}
-          <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId word=currentWord}}</li>
+          <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId word=currentWord.crypted}}</li>
         {{else}}
           <li>{{> Player name=profile.firstName pictureUrl=profile.pictureUrl userId=userId }}</li>
         {{/if}}
