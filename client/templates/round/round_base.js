@@ -57,6 +57,12 @@ Template.RoundBase.onRendered(function () {
 Template.RoundBase.helpers({
   isMaster: function() {
     return Meteor.player().master;
+  },
+
+  currentProgress: function () {
+    var now = Date.now();
+    var delta = now - Session.get('gameStartTime');
+    return delta/300;
   }
 });
 
@@ -69,6 +75,8 @@ Template.RoundBase.events({
           ! Session.get("selectedWord")) {
       return;
     }
+
+    Session.set('gameStartTime', Date.now());
 
     var player = Players.findOne({userId: this.userId});
     var game = Games.findOne(Session.get("game")._id);

@@ -41,6 +41,10 @@ li.gu-mirror { list-style-type: none; }
     height: 100%;
     margin: 0;
   }
+
+  & .col-xs-12 {
+    padding: 0;
+  }
 }
 
 .round-players {
@@ -52,6 +56,14 @@ li.gu-mirror { list-style-type: none; }
   padding: 0;
 }
 
+.btn-master-mode {
+  border-radius: 0;
+}
+
+.progress {
+  border-radius: 0;
+  height: 34px;
+}
 
 /******** RoundWords ********/
 .round-words {

@@ -3,11 +3,15 @@
   <!-- Words mode -->
   <div id="words" class="container round-base noselect">
     <div class="row">
-      <div class="col-xs-12 round-words">
+      <div class="col-xs-12 text-center">
         <button class="btn btn-primary pull-right btn-master-mode" data-target="#words" type="button" name="button">
           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </button>
 
+        <!-- {{> Progress value=currentProgress}} -->
+      </div>
+
+      <div class="col-xs-12 round-words">
         {{> RoundWords}}
       </div>
 
@@ -20,11 +24,15 @@
   <!-- Solution mode -->
   <div id="solution" class="container round-base noselect hidden">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12 text-center">
         <button class="btn btn-primary pull-left btn-master-mode" data-target="#solution" type="button" name="button">
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </button>
 
+        <!-- {{> Progress value=currentProgress}} -->
+      </div>
+
+      <div class="col-xs-12 round-solution">
         {{> RoundSolution}}
       </div>
     </div>

@@ -1,8 +1,6 @@
 <template name="RoundSolution">
-  <div class="row row-80">
+  <div class="row">
     <div class="col-xs-12 text-center" style="height: 100%; padding-top: 15%;">
-      <p style="font-size: 2.2em; position: absolute; left: 90px; color: rgb(108, 121, 132); z-index:-1;" id="placeholder">Drag the words here!</p>
-
       <ul class="round-words" id="bottom-solve">
         {{#each slots}}
           <li>{{> SolvedWord text=crypted solverPictureUrl=playerURL}}</li>
@@ -11,7 +9,7 @@
     </div>
   </div>
 
-  <div class="row-20">
+  <div>
     <div class="col-xs-12 text-center">
       <a href="#" class="btn btn-hover btn-menu" style="background-color: #00a1d5;" type="submit" name="validate-sentence">
         <img class="btn-img" style="background-color: #007095;" src="../images/check.png">
