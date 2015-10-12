@@ -2,6 +2,8 @@ Template.JoinGame.events({
   'click a[name="join-game"]': function(ev) {
     ev.preventDefault();
 
+    Session.set('error', '');
+
     var gameCode = $('input[name="gameName"]').val();
     Meteor.call('joinGame', gameCode, function(err, result) {
       if (err || !result) {
