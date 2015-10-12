@@ -7,7 +7,7 @@ WordLogic = function(game, skip) {
     var players = game.getPlayers();
 
     _.each(players, function(player) {
-      Players.update({_id: player._id}, { $set: { master: false }});
+      Players.update({_id: player._id}, { $set: { master: false, currentWord: "" }});
     });
     Players.update({_id: _.sample(players)._id}, { $set: { master: true }});
 
@@ -41,14 +41,39 @@ WordLogic.prototype.endRound = function() {
   });
 };
 
-WordLogic.prototype.giveWord = function(player, word) {
-  Games.update({_id: game._id}, { $set: { pool: _.without(this.game().pool, word) }});
+WordLogic.prototype.giveWord = function(player, code) {
+  var word = _.find(this.game().pool, function(word){ return word.crypted == code; });
+
   Players.update({_id: player._id}, { $set: { currentWord: word }});
+
+  Games.update({_id: this.gameId}, {
+    $pull: { pool: { crypted: code } }
+  });
 };
-WordLogic.prototype.returnWord = function(player) {
-  Games.update(game, { $set: { pool: this.game().pool.concat([player.currentWord]) }});
-  Players.update( player, { $set: { currentWord: "empty" }});
+
+
+WordLogic.prototype.returnWord = function() {
+  var player = Meteor.player();
+
+  Games.update({_id: this.gameId}, {
+    $push: { pool: { $each: [ player.currentWord ] } }
+  });
+
+  Players.update( { _id: player._id }, { $set: { currentWord: "" }});
 };
+
+WordLogic.prototype.solveWord = function() {
+  var player = Meteor.player();
+  var word = player.currentWord;
+  word.playerURL = player.profile.pictureUrl;
+
+  Games.update({_id: this.gameId}, {
+    $push: { answer: { $each: [ word ] } }
+  });
+
+  Players.update( { _id: player._id }, { $set: { currentWord: "" }});
+};
+
 WordLogic.prototype.answerWord = function(pos, code) {
   var word = _.find(this.game().pool, function(word){ return word.crypted == code; });
 

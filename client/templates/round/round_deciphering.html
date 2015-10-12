@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12 text-center" style="margin-top: 0;">
         {{#if currentWord}}
-          {{> Word text=currentWord mode="white" wrap="true"}}
+          {{> Word text=currentWord.crypted mode="white" wrap="true"}}
         {{else}}
           {{> Word text="...waiting for word..." mode="green" wrap="true"}}
         {{/if}}
