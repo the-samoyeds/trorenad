@@ -1,4 +1,4 @@
-Template.RoundBase.onRendered(function(){
+Template.RoundBase.onRendered(function () {
   $(function() {
     togglePlaceholder();
   });
@@ -45,6 +45,15 @@ Template.RoundBase.onRendered(function(){
       paragraph.show();
     }
   }
+
+  // Toggle between 'words' and 'solution' mode
+  if (Session.get('masterMode') === 'words') {
+    $('#words').removeClass('hidden');
+    $('#solution').addClass('hidden');
+  } else if (Session.get('masterMode') === 'solution') {
+    $('#solution').removeClass('hidden');
+    $('#words').addClass('hidden');
+  }
 });
 
 Template.RoundBase.helpers({
@@ -74,6 +83,8 @@ Template.RoundBase.events({
   },
   'click .player': function (event) {
     console.log("USER ID SELECTED: " + this.userId);
+  },
+  'click .btn-master-mode': function (event) {
+    $('.btn-master-mode').closest('.container').toggleClass('hidden');
   }
-
 });
