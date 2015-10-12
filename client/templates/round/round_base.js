@@ -65,7 +65,8 @@ Template.RoundBase.events({
     $('.carousel-control').toggleClass('hidden');
   },
   'click .player': function (event) {
-    if (Meteor.player().userId == this.userId) {
+    if (Meteor.player().userId == this.userId ||
+          ! Session.get("selectedWord")) {
       return;
     }
 
