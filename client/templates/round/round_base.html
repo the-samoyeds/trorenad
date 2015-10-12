@@ -1,34 +1,35 @@
 <template name="RoundBase">
   {{#if isMaster}}
-    <div class="round-base noselect">
-      <div class="round-panel upper-panel">
-        {{> RoundWords}}
-      </div>
+  <!-- Words mode -->
+  <div id="words" class="container noselect">
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-primary pull-right btn-master-mode" data-target="#words" type="button" name="button">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </button>
 
-      <div class="round-panel lower-panel">
-        <div id="slider" class="carousel slide" data-ride="carousel">
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              {{> RoundPlayers}}
-            </div>
-            <div class="item">
-              {{> RoundSolution}}
-            </div>
-          </div>
-
-          <!-- Controls -->
-          <a class="left carousel-control hidden" href="#slider" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#slider" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+        <div class="row">
+          {{> RoundWords}}
+          {{> RoundPlayers}}
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Solution mode -->
+  <div id="solution" class="container noselect hidden">
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-primary pull-left btn-master-mode" data-target="#solution" type="button" name="button">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </button>
+
+        <div class="row">
+          {{> RoundSolution}}
+        </div>
+      </div>
+    </div>
+  </div>
   {{else}}
     {{> RoundDeciphering}}
   {{/if}}
