@@ -31,36 +31,32 @@ li.gu-mirror { list-style-type: none; }
 
 /******** RoundBase ********/
 .round-base {
-  position: relative;
   width: 100%;
   height: 100%;
-}
+  margin: 0;
+  padding: 0;
 
-.round-panel {
-  height: 50%;
-}
-
-.upper-panel {
-}
-
-.lower-panel {
-  & .carousel.slide,
-  & .carousel.slide .carousel-inner {
+  & > div {
     height: 100%;
+    height: 100%;
+    margin: 0;
   }
-  & .carousel.slide .item {
-    height: 95%;
-  }
+}
 
-  & .carousel.slide .row-80 { height: 80%; }
-  & .carousel.slide .row-20 { height: 20%; }
+.round-players {
+  vertical-align: bottom;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
 }
 
 
 /******** RoundWords ********/
 .round-words {
+  display: inline-block;
   text-align: center;
-  height: 100%;
 }
 
 .round-words li {
