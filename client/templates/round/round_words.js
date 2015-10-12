@@ -10,3 +10,10 @@ Template.RoundWords.helpers({
     return game.pool;
   }
 });
+
+Template.RoundWords.helpers({
+  getAnswer: function() {
+    var game = Games.findOne(Session.get("game")._id);
+    return game.answers;
+  }
+});
