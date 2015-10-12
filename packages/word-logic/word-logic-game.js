@@ -29,7 +29,10 @@ WordLogic.prototype.startRound = function() {
   var words = [];
   _.each(game, function(g) { words = words.concat(g.words); });
 
-  Games.update({_id: this.gameId}, { $set: { pool: words, answer: [], started: true }});
+  var sortedAnswers = _.sortBy(words, function(word){ return word.pos; });
+  var fullAnswer = _.reduce(sortedAnswers, function(memo, word){ return memo + " " + word.word; }, "").trim();
+
+  Games.update({_id: this.gameId}, { $set: { pool: words, answer: [], fullAnswer: fullAnswer, started: true }});
 };
 
 WordLogic.prototype.endRound = function() {
@@ -239,7 +242,7 @@ WordLogic.prototype._nextMaster = function() {
     Players.update({_id: player._id}, { $set: { master: false }});
   });
 
-  var master = _.sample(players);
+  master = _.sample(players);
 
   Players.update({_id: master._id}, { $set: { master: true }});
 
