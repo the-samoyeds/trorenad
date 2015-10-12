@@ -4,8 +4,8 @@
       <p style="font-size: 2.2em; position: absolute; left: 90px; color: rgb(108, 121, 132); z-index:-1;" id="placeholder">Drag the words here!</p>
 
       <ul class="round-words" id="bottom-solve">
-        {{#each getAnswer}}
-          <li>{{> SolvedWord text=crypted solverPictureUrl="https://lh6.googleusercontent.com/-cb-tVtzfIqs/AAAAAAAAAAI/AAAAAAAAGKQ/4QFEqwpiQWA/photo.jpg"}}</li>
+        {{#each slots}}
+          <li>{{> SolvedWord text=crypted solverPictureUrl=playerURL}}</li>
         {{/each}}
       </ul>
     </div>
