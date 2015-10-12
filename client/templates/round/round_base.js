@@ -63,6 +63,10 @@ Template.RoundBase.helpers({
     var now = Date.now();
     var delta = now - Session.get('gameStartTime');
     return delta/300;
+  },
+
+  currentRound: function () {
+    return Games.findOne(Session.get("game")._id).currentRound;
   }
 });
 

@@ -56,8 +56,13 @@ li.gu-mirror { list-style-type: none; }
   padding: 0;
 }
 
-.btn-master-mode {
+.btn-master-mode,
   border-radius: 0;
+}
+
+.btn-round {
+  border-radius: 0;
+  width: 38px;
 }
 
 .progress {
